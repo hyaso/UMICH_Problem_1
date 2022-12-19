@@ -14,6 +14,8 @@ namespace UMICH_Problem_1
             ekgList.Add(new EKG(DateTime.Now, 1.5));
             ekgList.Add(new EKG(DateTime.Now, 1.8));
             ekgList.Add(new EKG(DateTime.Now, 2.1));
+            ekgList.Add(new EKG(DateTime.Now, -0.5));
+            ekgList.Add(new EKG(DateTime.Now, -1.5));
 
             foreach (var ekg in ekgList)
             {
@@ -22,7 +24,7 @@ namespace UMICH_Problem_1
         }
     }
 
-    // EKG Class that contains the time and the value of the ST Segement
+    // EKG Class that contains the timestamp and the value of the ST Segement
     public class EKG
     {
         public DateTime Time { get; set; }
