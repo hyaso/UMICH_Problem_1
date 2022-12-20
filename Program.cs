@@ -8,10 +8,10 @@ namespace UMICH_Problem_1
         static void Main(string[] args)
         {
             IschemiaPredictor test = new IschemiaPredictor();
-            List<EKG> ekgList = new List<EKG>();
 
+            List<EKG> ekgList = new List<EKG>();
             ekgList.Add(new EKG(DateTime.Now, 0.1));
-            ekgList.Add(new EKG(DateTime.Now, 0.8));
+            ekgList.Add(new EKG(DateTime.Now, 3.1));
             ekgList.Add(new EKG(DateTime.Now, 1.5));
             ekgList.Add(new EKG(DateTime.Now, 1.8));
             ekgList.Add(new EKG(DateTime.Now, 2.1));
