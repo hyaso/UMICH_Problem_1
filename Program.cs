@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 
 namespace UMICH_Problem_1
 {
@@ -15,7 +16,6 @@ namespace UMICH_Problem_1
             ekgList.Add(new EKG(DateTime.Now, 1.8));
             ekgList.Add(new EKG(DateTime.Now, 2.1));
             ekgList.Add(new EKG(DateTime.Now, -0.5));
-            ekgList.Add(new EKG(DateTime.Now, -1.5));
 
             foreach (var ekg in ekgList)
             {
@@ -23,6 +23,7 @@ namespace UMICH_Problem_1
             }
         }
     }
+
 
     // EKG Class that contains the timestamp and the value of the ST Segement
     public class EKG
@@ -45,6 +46,8 @@ namespace UMICH_Problem_1
         // Fields to keep track of minimum and maximum
         private double minValue = double.MaxValue;
         private double maxValue = double.MinValue;
+        private double runningAverage = 0;
+        private double stValuesSum = 0;
 
         // Function that passes EKG measurement as an argument and adds it to the queue.
         public void ProcessEKG(EKG measurement)
@@ -56,6 +59,11 @@ namespace UMICH_Problem_1
             // Sets the maxValue field to the maximum value to the queue
             minValue = Math.Min(minValue, measurement.STvalue);
             maxValue = Math.Max(maxValue, measurement.STvalue);
+
+            // Stores the sum of all ST values that are queued so the running average can be found
+            stValuesSum += measurement.STvalue;
+            runningAverage = stValuesSum/ekg_Measurements.Count;
+
 
             // While loop that continuously checks if there are more than 60 measurements (2 minutes worth at 2 second intervals)
             // If more than 60 measurements, remove the oldest measurement, and then reset min/max values
